@@ -42,7 +42,9 @@ THIRD_PARTY_APPS = [
     "django_countries",
     "phonenumber_field",
     "djoser",
-    "rest_framework_simplejwt"
+    "rest_framework_simplejwt",
+    "djcelery_email"
+
 ]
 
 LOCAL_APPS = [
@@ -158,24 +160,25 @@ SIMPLE_JWT = {
 }
 
 DJOSER = {
-     "LOGIN_FIELD":"email",
-     "USER_CREATED_PASSWORD_RETYPE": True,
-     "USER_CHANGED_EMAIL_CONFIRMATION": True,
-     "PASSWORD_CHANGED_EMAIL_CONFIRMATION": True,
-     "SEND_CONFIRMATION_EMAIL": True,
-     "PASSWORD_RESET_CONFIRM_URL": "password/reset/confirm/{uid}/{token}",
-     "SET_PASSWORD_RETYPE": True,
-     "PASSWORD_RESET_CONFIRM_RETYPE": True,
-     "USERNAME_RESET_CONFIRM_URL": "email/reset/confirm/{uid}/{token}",
-     "ACTIVATION_URL":"activate/{uid}/{token}",
-     "SEND_ACTIVATION_EMAIL": True,
-     "SERIALIZERS":{
-        'user_create': 'apps.users.serializers.CreateUserSerializer',
-        'user': 'apps.users.serializers.UserSerializer',
-        'current_user': "apps.users.serializers.UserSerializer",
-        'user_delete': "djoser.serializers.UserDeleteSerializer",
-     },
+    "LOGIN_FIELD": "email",
+    "USER_CREATE_PASSWORD_RETYPE": True,
+    "USERNAME_CHANGED_EMAIL_CONFIRMATION": True,
+    "PASSWORD_CHANGED_EMAIL_CONFIRMATION": True,
+    "SEND_CONFIRMATION_EMAIL": True,
+    "PASSWORD_RESET_CONFIRM_URL": "password/reset/confirm/{uid}/{token}",
+    "SET_PASSWORD_RETYPE": True,
+    "PASSWORD_RESET_CONFIRM_RETYPE": True,
+    "USERNAME_RESET_CONFIRM_URL": "email/reset/confirm/{uid}/{token}",
+    "ACTIVATION_URL": "activate/{uid}/{token}",
+    "SEND_ACTIVATION_EMAIL": True,
+    "SERIALIZERS": {
+        "user_create": "apps.users.serializers.CreateUserSerializer,",
+        "user": "apps.users.serializers.UserSerializer",
+        "current_user": "apps.users.serializers.UserSerializer",
+        "user_delete": "djoser.serializers.UserDeleteSerializer",
+    },
 }
+
 
 AUTH_USER_MODEL = "users.User"
 
