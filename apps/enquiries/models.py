@@ -19,3 +19,6 @@ class Enquiry(TimeStampedUUIDModel):
         return self.email
     class Meta:
         verbose_name_plural = "Enquiries"
+
+
+
