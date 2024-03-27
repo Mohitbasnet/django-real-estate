@@ -1,0 +1,46 @@
+
+version: "3.9"
+
+services:
+    api:
+        build:
+            context: .
+            dockerfile: ./docker/local/django/Dockerfile
+        command: /start
+        volumes:
+            - .:/app
+            - static_volume:/app/staticfiles
+            - media_volume:/app/mediafiles
+        ports:
+            - "8000:8000"
+        env_file:
+            - .env
+        depends_on:
+            - mysql-db
+        networks:
+            - estate-react
+    mysql-db:
+        env_file:
+            - .env
+        image: mysql/mysql-server:latest  # Adjust image and version as needed
+        ports:
+            - "3306:3306"  # Map MySQL port (default 3306) to host port
+        volumes:
+            - type: volume
+              source: mysql_data
+              target: /var/lib/mysql
+              volume:
+                nocopy: true  # Path for persistent data
+        environment:
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        networks:
+            - estate-react  # Connect to the same network as your other services
+
+networks:
+    estate-react:
+        driver: bridge
+
+volumes:
+    mysql_data:
+    static_volume:
+    media_volume:

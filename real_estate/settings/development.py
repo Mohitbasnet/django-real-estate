@@ -13,7 +13,7 @@ SITE_NAME = "Real Estate"
 DATABASES = {
     "default": {
         "ENGINE": env("MYSQL_ENGINE"),
-        "NAME": env("MYSQL_DB"),
+        "NAME": env("MYSQL_DATABASE"),
         "USER": env("MYSQL_USER"),
         "PASSWORD": env("MYSQL_PASSWORD"),
         "HOST": env("MYSQL_HOST"),

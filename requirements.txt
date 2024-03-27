@@ -25,3 +25,4 @@ django-celery-email==3.0.0
 argh==0.26.2
 PyYAML==5.3.1
 watchdog==1.0.2
+mysql-connector-python==8.0.5
