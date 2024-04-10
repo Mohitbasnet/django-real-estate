@@ -54,6 +54,7 @@ LOCAL_APPS = [
     "apps.ratings",
     "apps.properties",
     "apps.enquiries",
+    ""
 
 ]
 
