@@ -12,6 +12,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 ENV PYTHONUNBUFFERED 1
 
+RUN pip install mysql-connector-python 
 
 RUN apt-get update && \
     apt-get install -y build-essential libpq-dev gettext default-libmysqlclient-dev && \
